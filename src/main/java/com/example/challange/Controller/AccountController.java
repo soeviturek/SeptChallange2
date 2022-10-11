@@ -41,7 +41,7 @@ public class AccountController {
         }
         return ResponseEntity.ok(check);
     }
-    @GetMapping("/account/{id}")
+    @GetMapping("/account/person/{id}")
     ResponseEntity<Object> getPersonAccounts(@PathVariable("id") int id){
         List<Account> list = accountService.getPersonAccounts(id);
         return ResponseEntity.ok(list);

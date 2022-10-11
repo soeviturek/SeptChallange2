@@ -3,10 +3,12 @@ package com.example.challange.service;
 import com.example.challange.model.Account;
 import com.example.challange.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class AccountServiceImpl implements AccountService{
     @Autowired
     AccountRepository accountRepository;
@@ -25,6 +27,7 @@ public class AccountServiceImpl implements AccountService{
             update.setAccountType(account.getAccountType());
             update.setBalance(account.getBalance());
             update.setDate(account.getDate());
+            accountRepository.save(update);
         }
         return update;
     }

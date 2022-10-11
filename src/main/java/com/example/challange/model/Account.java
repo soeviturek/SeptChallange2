@@ -2,6 +2,7 @@ package com.example.challange.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,24 +11,30 @@ import java.util.Date;
 @Entity
 @Table(name = "account")
 public class Account {
-    private int id;
-    private String accountType; //Term Investment, Loan, Saving
     @Id
+    @Column(name = "account_number",unique=true,nullable = false,columnDefinition="VARCHAR(64)")
     private String accountNumber;
+    @Column(name = "id")
+    private int id;
+    @Column(name = "account_type")
+    private String accountType; //Term Investment, Loan, Saving
+    @Column(name = "account_name")
     private String accountName;
-    private String Balance;
+    @Column(name = "balance")
+    private String balance;
+    @Column(name = "date")
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date date;
 
     public Account() {
     }
 
-    public Account(int id, String accountType, String accountNumber, String accountName, String balance, Date date) {
+    public Account(String accountNumber, int id, String accountType, String accountName, String balance, Date date) {
+        this.accountNumber = accountNumber;
         this.id = id;
         this.accountType = accountType;
-        this.accountNumber = accountNumber;
         this.accountName = accountName;
-        Balance = balance;
+        balance = balance;
         this.date = date;
     }
 
@@ -48,7 +55,7 @@ public class Account {
     }
 
     public String getBalance() {
-        return Balance;
+        return balance;
     }
 
     public Date getDate() {
@@ -72,7 +79,7 @@ public class Account {
     }
 
     public void setBalance(String balance) {
-        Balance = balance;
+        this.balance = balance;
     }
 
     public void setDate(Date date) {
@@ -86,7 +93,7 @@ public class Account {
                 ", accountType='" + accountType + '\'' +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", accountName='" + accountName + '\'' +
-                ", Balance='" + Balance + '\'' +
+                ", Balance='" + balance + '\'' +
                 ", date=" + date +
                 '}';
     }
