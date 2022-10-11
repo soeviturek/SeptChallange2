@@ -4,25 +4,29 @@ package com.example.challange.service;
 import com.example.challange.model.Person;
 import com.example.challange.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PersonServiceImpl implements PersonService{
     @Autowired
     PersonRepository personRepository;
 
     @Override
     public Person addPerson(Person person) {
-        Person check = personRepository.getById(person.getId());
-        if(check == null){
-            return personRepository.save(person);
-        }
-        return null;
+//        Person check = personRepository.getReferenceById(person.getId());
+//        if(check == null){
+//            return personRepository.save(person);
+//        }
+//        return null;
+        System.out.println("");
+        return personRepository.save(person);
     }
 
     @Override
     public Person updatePerson(Person person) {
-        Person update = personRepository.getById(person.getId());
+        Person update = personRepository.getReferenceById(person.getId());
         if(update == null){
             return null;
         }
@@ -37,7 +41,7 @@ public class PersonServiceImpl implements PersonService{
 
     @Override
     public Person getPersonById(int id) {
-        Person person = personRepository.getById(id);
+        Person person = personRepository.getReferenceById(id);
         return person;
     }
     @Override

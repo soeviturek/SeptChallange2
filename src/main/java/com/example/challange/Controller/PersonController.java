@@ -38,7 +38,7 @@ public class PersonController {
         }
         return ResponseEntity.ok(check);
     }
-    @GetMapping("/person/")
+    @GetMapping("/person")
     ResponseEntity<Object> getAllPersons(){
         List<Person> list = personService.getAllPersons();
         return ResponseEntity.ok(list);

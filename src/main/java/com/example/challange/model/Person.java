@@ -3,9 +3,10 @@ package com.example.challange.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "person")
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private int id;
 
@@ -18,6 +19,17 @@ public class Person {
     public Person(){
 
     }
+
+    public Person(int id, String address, String postcode, String age, String job, String email, String phoneno) {
+        this.id = id;
+        this.address = address;
+        this.postcode = postcode;
+        this.age = age;
+        this.job = job;
+        this.email = email;
+        this.phoneno = phoneno;
+    }
+
     public int getId() {
         return id;
     }
